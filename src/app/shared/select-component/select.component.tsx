@@ -5,7 +5,8 @@ const {Option} = Select;
 interface ISelectComponentProps<T> {
     onApply: (id: number) => void;
     data: T[];
-    defaultVal?: number;
+    selectedVal?: number | null;
+    allowClear: boolean;
 }
 
 interface ISelectValue {
@@ -25,15 +26,15 @@ export function SelectComponent<T extends ISelectValue>(props: ISelectComponentP
     }, [props.data]);
 
     useEffect(() => {
-        setValue(props.defaultVal as number);
-    }, [props.defaultVal]);
+        setValue(props.selectedVal as number);
+    }, [props.selectedVal]);
 
     const handleChange = (id: number) => {
         props.onApply(id);
     }
 
     return (
-        <Select value={value} onChange={handleChange}>{selectList}</Select>
+        <Select value={value} onChange={handleChange}>{selectList} allowClear={props.allowClear}</Select>
     );
 }
 

@@ -70,10 +70,13 @@ class EmployeeManagementFeature extends React.Component<EmployeeManagementFeatur
     }
 
     /**
-     * Remove employee
+     * Removes employee.
      */
     onRemoveEmployee = (id: number) => {
-
+        this.props.dispatch({
+            type: EMPLOYEE_ACTIONS_TYPES.EMPLOYEE_REMOVE,
+            payload: id
+        });
     }
 
     /**
@@ -130,7 +133,7 @@ class EmployeeManagementFeature extends React.Component<EmployeeManagementFeatur
                     visible={this.state.isEditFormVisible}
                     onApply={this.onEditApply}
                     onCancel={this.onEditCancel}
-                    editableEmployee={this.state.editableEntity}
+                    editableEmployee={this.state.editableEntity as IEmployee}
                 />
             </div>
         );

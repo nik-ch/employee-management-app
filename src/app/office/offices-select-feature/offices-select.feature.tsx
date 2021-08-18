@@ -15,11 +15,13 @@ const mapStateToProps = ({office}: RootState) => {
 
 type OfficesSelectFeatureProps = IOfficeStoreState & {
     dispatch: (action: OfficeAction) => void;
+    onSelect: (o: IOffice | null) => void;
+    value?: IOffice;
 }
 
 const OfficesSelectFeature = (props: OfficesSelectFeatureProps) => {
     const [offices, setOffices] = useState<IOffice[]>([]);
-    const [defaultVal, setDefaultVal] = useState(1);
+    const [selectedVal, setSelectedValue] = useState(1);
 
     useMountEffect(() => {
         fetchOffices(props.dispatch);
@@ -27,16 +29,28 @@ const OfficesSelectFeature = (props: OfficesSelectFeatureProps) => {
 
     useEffect(() => {
         setOffices(props.data);
-        const defaultVal = props.data.length ? props.data[0].id : 1;
-        setDefaultVal(defaultVal);
+        // if value is given, we should not select first entity as default
+        if (!props.value) {
+            const firstOfficeInList = props.data.length ? props.data[0] : null;
+            const defaultVal = !!firstOfficeInList ? firstOfficeInList.id : 1;
+            setSelectedValue(defaultVal);
+            props.onSelect(firstOfficeInList);
+        }
     }, [props.data]);
 
+    useEffect(() => {
+        if (props.value) {
+            setSelectedValue(props.value.id);
+        }
+    }, [props.value]);
+
     const onApply = (id: number) => {
-        console.log(id, ' was selected');
+        const office = offices.find(o => o.id === id);
+        props.onSelect(office || null);
     };
 
     return (
-        <SelectComponent onApply={onApply} data={offices} defaultVal={defaultVal}/>
+        <SelectComponent onApply={onApply} data={offices} selectedVal={selectedVal} allowClear={false}/>
     );
 }
 

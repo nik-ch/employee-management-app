@@ -18,14 +18,17 @@ const EmployeesList = (props: IEmployeesListProps) => {
     {
       title: 'First Name',
       dataIndex: 'first_name',
+      sorter: (emp1: IEmployee, emp2: IEmployee) => emp1.first_name > emp2.first_name ? 1 : -1
     },
     {
       title: 'Last Name',
       dataIndex: 'last_name',
+      sorter: (emp1: IEmployee, emp2: IEmployee) => emp1.last_name > emp2.last_name ? 1 : -1
     },
     {
       title: 'Office',
       dataIndex: ['office', 'name'],
+      sorter: (emp1: IEmployee, emp2: IEmployee) => emp1.office.name > emp2.office.name ? 1 : -1
     },
     {
       title: 'Publisher',
