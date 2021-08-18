@@ -1,5 +1,5 @@
-import {IOffice} from './IOffice';
-import {IPublisher} from './IPublisher';
+import {IOffice} from '../../office/interfaces';
+import {IPublisher} from '../../publisher/interfaces';
 
 export interface IEmployee {
     id: number;
