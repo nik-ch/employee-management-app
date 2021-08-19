@@ -22,12 +22,12 @@ export default function EditEmployeeFormComponent(props: IEditEmployeeProps) {
         form.resetFields();
         const editEntity = props.editableEmployee;
         if (editEntity) {
-            Object.keys(editEntity).forEach(key => {
-                form.setFieldsValue({[key]: (editEntity as any)[key]})
+            const keys = Object.keys(editEntity) as Array<keyof IEmployee>;
+            keys.forEach(key => {
+                form.setFieldsValue({[key]: editEntity[key]})
             });
         }
-        console.log(form.getFieldsValue());
-    }, [props.editableEmployee]);
+    }, [props.editableEmployee, form]);
 
     const onSave = async () => {
         try {
@@ -52,7 +52,7 @@ export default function EditEmployeeFormComponent(props: IEditEmployeeProps) {
     };
 
     return (
-        <Modal visible={props.visible} onCancel={props.onCancel} onOk={onSave} okText="Save">
+        <Modal forceRender visible={props.visible} onCancel={props.onCancel} onOk={onSave} okText="Save">
             <Form {...formItemLayout} form={form}>
                 <Form.Item label="Id" name="id">
                     <span>{props.editableEmployee?.id}</span>

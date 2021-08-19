@@ -21,7 +21,7 @@ type OfficesSelectFeatureProps = IOfficeStoreState & {
 
 const OfficesSelectFeature = (props: OfficesSelectFeatureProps) => {
     const [offices, setOffices] = useState<IOffice[]>([]);
-    const [selectedVal, setSelectedValue] = useState(1);
+    const [selectedValue, setSelectedValue] = useState(1);
 
     useMountEffect(() => {
         fetchOffices(props.dispatch);
@@ -36,6 +36,7 @@ const OfficesSelectFeature = (props: OfficesSelectFeatureProps) => {
             setSelectedValue(defaultVal);
             props.onSelect(firstOfficeInList);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.data]);
 
     useEffect(() => {
@@ -50,7 +51,7 @@ const OfficesSelectFeature = (props: OfficesSelectFeatureProps) => {
     };
 
     return (
-        <SelectComponent onApply={onApply} data={offices} selectedVal={selectedVal} allowClear={false}/>
+        <SelectComponent onApply={onApply} data={offices} selectedVal={selectedValue} allowClear={false}/>
     );
 }
 
