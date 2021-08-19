@@ -27,7 +27,7 @@ export interface IFetchEmployeesSuccessAction {
 }
 export interface IFetchEmployeesErrorAction {
     type: EMPLOYEE_ACTIONS_TYPES.EMPLOYEE_FETCH_ERROR,
-    payload: string;
+    payload: unknown;
 }
 export interface IFetchEmployeesPengingStateAction {
     type: EMPLOYEE_ACTIONS_TYPES.EMPLOYEE_FETCH_PENDING_STATE,

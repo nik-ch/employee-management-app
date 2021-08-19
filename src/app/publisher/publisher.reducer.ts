@@ -20,7 +20,7 @@ export const publisherReducer = (state = initialState, action: PublisherAction):
             return {
                 ...state,
                 isPending: false,
-                error: action.payload
+                error: 'An error occurred while loading publishers data'
             };
         }
         case PUBLISHER_ACTIONS_TYPES.PUBLISHER_FETCH_PENDING_STATE: {

@@ -12,13 +12,13 @@ export interface IFetchPublishersSuccessAction {
 }
 export interface IFetchPublishersErrorAction {
     type: PUBLISHER_ACTIONS_TYPES.PUBLISHER_FETCH_ERROR,
-    payload: string;
+    payload: unknown;
 }
-export interface IFetchPublishersPengingStateAction {
+export interface IFetchPublishersPendingStateAction {
     type: PUBLISHER_ACTIONS_TYPES.PUBLISHER_FETCH_PENDING_STATE,
     payload: boolean;
 }
 
 export type PublisherAction = IFetchPublishersSuccessAction
     | IFetchPublishersErrorAction
-    | IFetchPublishersPengingStateAction;
+    | IFetchPublishersPendingStateAction;

@@ -20,7 +20,7 @@ export const officeReducer = (state: IOfficeStoreState = initialState, action: O
             return {
                 ...state,
                 isPending: false,
-                error: action.payload
+                error: 'An error occurred while loading offices data'
             };
         }
         case OFFICE_ACTIONS_TYPES.OFFICE_FETCH_PENDING_STATE: {

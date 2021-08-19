@@ -12,13 +12,13 @@ export interface IFetchOfficesSuccessAction {
 }
 export interface IFetchOfficesErrorAction {
     type: OFFICE_ACTIONS_TYPES.OFFICE_FETCH_ERROR,
-    payload: string;
+    payload: unknown;
 }
-export interface IFetchOfficesPengingStateAction {
+export interface IFetchOfficesPendingStateAction {
     type: OFFICE_ACTIONS_TYPES.OFFICE_FETCH_PENDING_STATE,
     payload: boolean;
 }
 
 export type OfficeAction = IFetchOfficesSuccessAction
     | IFetchOfficesErrorAction
-    | IFetchOfficesPengingStateAction;
+    | IFetchOfficesPendingStateAction;

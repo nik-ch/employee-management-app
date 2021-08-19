@@ -38,11 +38,11 @@ export default function EditEmployeeFormComponent(props: IEditEmployeeProps) {
         }
     }
 
-    const onOfficeChanged = (o: IOffice | null) => {
+    const onOfficeChanged = (o?: IOffice) => {
         form.setFieldsValue({office: o});
     }
 
-    const onPublisherChanged = (p: IPublisher | null) => {
+    const onPublisherChanged = (p?: IPublisher) => {
         form.setFieldsValue({publisher: p});
     }
 

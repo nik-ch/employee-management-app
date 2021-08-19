@@ -15,13 +15,13 @@ const mapStateToProps = ({publisher}: RootState) => {
 
 type PublishersSelectFeatureProps = IPublisherStoreState & {
     dispatch: (action: PublisherAction) => void
-    onSelect: (p: IPublisher | null) => void;
+    onSelect: (p?: IPublisher) => void;
     value?: IPublisher;
 }
 
 const PublishersSelectFeature = (props: PublishersSelectFeatureProps) => {
     const [publishers, setPublishers] = useState<IPublisher[]>([]);
-    const [selectedVal, setSelectedValue] = useState<number | null>(null);
+    const [selectedVal, setSelectedValue] = useState<number | undefined>(undefined);
 
     useMountEffect(() => {
         fetchPublishers(props.dispatch);
@@ -34,12 +34,18 @@ const PublishersSelectFeature = (props: PublishersSelectFeatureProps) => {
     useEffect(() => {
         if (props.value) {
             setSelectedValue(props.value.id);
+        } else {
+            setSelectedValue(props.value);
         }
     }, [props.value]);
 
-    const onApply = (id: number) => {
-        const publisher = publishers.find(p => p.id === id);
-        props.onSelect(publisher || null);
+    const onApply = (id?: number) => {
+        if (id === undefined) {
+            props.onSelect(id);
+        } else {
+            const publisher = publishers.find(p => p.id === id);
+            props.onSelect(publisher);
+        }
     };
 
     return (

@@ -1,0 +1,19 @@
+.wrapper :global(.ant-spin-container) {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper :global(.ant-btn) {
+    align-self: flex-end;
+}
+
+.wrapper :global(.ant-table-wrapper) {
+    margin-top: 12px;
+}
+
+.action-col > span {
+    color: #1890ff;
+    cursor: pointer;
+}
+
+

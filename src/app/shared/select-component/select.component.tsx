@@ -3,7 +3,7 @@ import {useEffect, useState} from 'react';
 const {Option} = Select;
 
 interface ISelectComponentProps<T> {
-    onApply: (id: number) => void;
+    onApply: (id?: number) => void;
     data: T[];
     selectedVal?: number | null;
     allowClear: boolean;
@@ -34,7 +34,11 @@ export function SelectComponent<T extends ISelectValue>(props: ISelectComponentP
     }
 
     return (
-        <Select value={value} onChange={handleChange}>{selectList} allowClear={props.allowClear}</Select>
+        <Select
+            value={value}
+            onChange={handleChange}
+            allowClear={props.allowClear}
+        >{selectList}</Select>
     );
 }
 

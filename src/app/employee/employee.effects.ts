@@ -1,9 +1,17 @@
 import {EMPLOYEE_ACTIONS_TYPES, EmployeeAction} from './employee.actions';
 
-// TODO - add errors handling
 export const fetchEmployees = async (dispatch: (action: EmployeeAction) => void) => {
-    // const employeesJson = await fetch('https://yoc-media.github.io/weather/api/users.json');
-    // const employees = await employeesJson.json();
+    // try {
+    //     dispatch({type: EMPLOYEE_ACTIONS_TYPES.EMPLOYEE_FETCH_PENDING_STATE, payload: true});
+    //     const employeesJson = await fetch('https://yoc-media.github.io/weather/api/users.json');
+    //     const employees = await employeesJson.json();
+    //     dispatch({type: EMPLOYEE_ACTIONS_TYPES.EMPLOYEE_FETCH_PENDING_STATE, payload: false});
+    //     dispatch({type: EMPLOYEE_ACTIONS_TYPES.EMPLOYEE_FETCH_SUCCESS, payload: employees});
+    // } catch (e) {
+    //     dispatch({type: EMPLOYEE_ACTIONS_TYPES.EMPLOYEE_FETCH_PENDING_STATE, payload: false});
+    //     dispatch({type: EMPLOYEE_ACTIONS_TYPES.EMPLOYEE_FETCH_ERROR, payload: e});
+    // }
+
 
     // using mocked data here, because link above contains error:
     // user with 'id' 4 contains link to the publisher with 'id' 4, but shows publisher name of entity with 'id' 2

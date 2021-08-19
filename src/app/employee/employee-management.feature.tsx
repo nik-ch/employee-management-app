@@ -98,10 +98,9 @@ class EmployeeManagementFeature extends React.Component<EmployeeManagementFeatur
      * Apply new employee adding or editing result.
      */
     onEditApply = (e: IEmployee) => {
+        // since now add and edit actions work in a same way, we dispatch only update event
         this.props.dispatch({
-            type: !!this.state.editableEntity ?
-                EMPLOYEE_ACTIONS_TYPES.EMPLOYEE_UPDATE :
-                EMPLOYEE_ACTIONS_TYPES.EMPLOYEE_ADD,
+            type: EMPLOYEE_ACTIONS_TYPES.EMPLOYEE_UPDATE,
             payload: e
         });
         this.setState({

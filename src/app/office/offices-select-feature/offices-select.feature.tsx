@@ -15,7 +15,7 @@ const mapStateToProps = ({office}: RootState) => {
 
 type OfficesSelectFeatureProps = IOfficeStoreState & {
     dispatch: (action: OfficeAction) => void;
-    onSelect: (o: IOffice | null) => void;
+    onSelect: (o?: IOffice) => void;
     value?: IOffice;
 }
 
@@ -31,7 +31,7 @@ const OfficesSelectFeature = (props: OfficesSelectFeatureProps) => {
         setOffices(props.data);
         // if value is given, we should not select first entity as default
         if (!props.value) {
-            const firstOfficeInList = props.data.length ? props.data[0] : null;
+            const firstOfficeInList = props.data.length ? props.data[0] : undefined;
             const defaultVal = !!firstOfficeInList ? firstOfficeInList.id : 1;
             setSelectedValue(defaultVal);
             props.onSelect(firstOfficeInList);
@@ -45,9 +45,10 @@ const OfficesSelectFeature = (props: OfficesSelectFeatureProps) => {
         }
     }, [props.value]);
 
-    const onApply = (id: number) => {
+    const onApply = (id?: number) => {
+        // id will always be defined here because allowClear is set to false
         const office = offices.find(o => o.id === id);
-        props.onSelect(office || null);
+        props.onSelect(office);
     };
 
     return (

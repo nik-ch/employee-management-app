@@ -1,5 +1,6 @@
 import {Table, Spin, Button} from 'antd';
 import {IEmployee} from '../interfaces';
+import styles from './employee-list.module.css';
 
 interface IEmployeesListProps {
   isPending: boolean;
@@ -38,6 +39,7 @@ const EmployeesList = (props: IEmployeesListProps) => {
       }
     },
     {
+      className: styles['action-col'],
       render: (text: string, record: IEmployee) => {
         return (
             <span onClick={() => props.onEditHandler(record)}>Edit</span>
@@ -45,6 +47,7 @@ const EmployeesList = (props: IEmployeesListProps) => {
       }
     },
     {
+      className: styles['action-col'],
       render: (text: string, record: IEmployee) => {
         return (
             <span onClick={() => props.onRemoveHandler(record.id)}>Remove</span>
@@ -54,7 +57,7 @@ const EmployeesList = (props: IEmployeesListProps) => {
   ];
 
   return (
-    <Spin spinning={props.isPending}>
+    <Spin spinning={props.isPending} wrapperClassName={styles.wrapper}>
       <Button type='primary' onClick={props.onAddHandler}>Add</Button>
       <Table dataSource={props.data} columns={columns} rowKey='id' pagination={false} />
     </Spin>

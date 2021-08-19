@@ -60,7 +60,7 @@ export const employeeReducer = (state= initialState, action: EmployeeAction): IE
             return {
                 ...state,
                 isPending: false,
-                error: action.payload
+                error: 'An error occurred while loading employees data'
             };
         }
         default: return state;
